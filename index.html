@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>STARK AI</title>
+
+<style>
+body {
+    background:#05070d;
+    color:#00bfff;
+    font-family:Arial;
+    text-align:center;
+    padding:30px;
+}
+
+h1 {
+    font-size:45px;
+    letter-spacing:8px;
+}
+
+.reactor {
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    border:5px solid #00bfff;
+    margin:30px auto;
+    box-shadow:0 0 40px #00bfff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.core {
+    width:60px;
+    height:60px;
+    background:#00bfff;
+    border-radius:50%;
+}
+
+input {
+    width:80%;
+    padding:15px;
+    border-radius:20px;
+    background:#001522;
+    color:white;
+    border:2px solid #00bfff;
+}
+
+button {
+    margin-top:15px;
+    padding:15px 30px;
+    border-radius:25px;
+    background:#001522;
+    color:#00bfff;
+    border:2px solid #00bfff;
+}
+
+#chat {
+    margin-top:30px;
+    text-align:left;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>STARK AI</h1>
+
+<div class="reactor">
+<div class="core"></div>
+</div>
+
+
+<input id="question" placeholder="Napiš STARK AI otázku">
+
+<br>
+
+<button onclick="ask()">Odeslat</button>
+
+
+<div id="chat">
+<p>STARK AI: Online. Čekám na příkaz.</p>
+</div>
+
+
+
+<script>
+
+let old = localStorage.getItem("starkChat");
+
+if(old){
+document.getElementById("chat").innerHTML=old;
+}
+
+
+function ask(){
+
+let q=document.getElementById("question").value;
+
+if(q=="") return;
+
+
+let chat=document.getElementById("chat");
+
+
+chat.innerHTML += "<p>Ty: "+q+"</p>";
+
+
+let answer="";
+
+
+q=q.toLowerCase();
+
+
+if(q.includes("ahoj")){
+answer="Dobrý den. STARK AI je online.";
+}
+
+else if(q.includes("kdo jsi")){
+answer="Jsem STARK AI, osobní asistent.";
+}
+
+else if(q.includes("projekt")){
+answer="Pomohu vám vytvořit a naplánovat projekt.";
+}
+
+else {
+answer="Tento příkaz se teprve učím.";
+}
+
+
+chat.innerHTML += "<p>STARK AI: "+answer+"</p>";
+
+
+localStorage.setItem("starkChat",chat.innerHTML);
+
+
+document.getElementById("question").value="";
+
+}
+
+</script>
+
+
+</body>
+</html>
