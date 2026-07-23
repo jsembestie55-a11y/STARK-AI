@@ -26,13 +26,13 @@ export default async function handler(req, res) {
     reply = "Jsem STARK AI, osobní asistent vytvořený pro pomoc a informace.";
   }
 
-  else if (q.includes("čas")) {
-    reply = "Aktuální čas zjistíte podle hodin vašeho zařízení.";
-  }
-
   else if (q.includes("počasí")) {
-    reply = "Nemám zatím přístup k živým datům počasí, ale tuto funkci můžeme později přidat.";
-  }
+  reply = "Nemám zatím přístup k živému počasí, ale tuto funkci můžeme později přidat.";
+}
+
+else if (q.includes("čas")) {
+  reply = "Aktuální čas zjistíte podle hodin vašeho zařízení.";
+}
 
   else if (q.includes("projekt")) {
     reply = "STARK AI je webový osobní asistent s futuristickým rozhraním.";
