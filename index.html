@@ -177,7 +177,9 @@ else if(q.includes("projekt")){
 }
 
 else if(q.includes("jmenuji se")){
-    let name = q.replace("jmenuji se","").trim();
+    let original = document.getElementById("question").value;
+    let name = original.replace(/jmenuji se/i,"").trim();
+
     localStorage.setItem("starkName", name);
     answer = "Zapamatoval jsem si tě. Tvoje jméno je " + name + ".";
 }
