@@ -19,10 +19,18 @@ export default async function handler(req, res) {
   if(q.includes("jmenuji se")) {
   const name = message.replace(/jmenuji se/i,"").trim();
 
-  return res.status(200).json({
-    reply:"Zapamatoval jsem si tě. Tvé jméno je " + name,
-    memory:name
-  });
+  if (q.includes("pamatuješ si moje jméno") || q.includes("jak se jmenuji")) {
+
+  if (memory) {
+    return res.status(200).json({
+      reply: "Ano. Pamatuji si, že se jmenuješ " + memory + "."
+    });
+  } else {
+    return res.status(200).json({
+      reply: "Zatím neznám tvoje jméno."
+    });
+  }
+
 }
 
   let reply = "Tento příkaz se ještě učím.";
