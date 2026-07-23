@@ -151,6 +151,8 @@ function ask(){
 
 let q=document.getElementById("question").value;
 
+let memory = localStorage.getItem("starkMemory") || "";
+
 if(q=="") return;
 
 
