@@ -191,8 +191,8 @@ message:q
 })
 .then(res=>res.json())
 .then(data=>{
-
-chat.innerHTML += "<p>STARK AI: "+data.reply+"</p>";
+    
+chat.innerHTML += "<p>STARK AI: " + (data.reply || data.error || JSON.stringify(data)) + "</p>";
 
 localStorage.setItem("starkChat",chat.innerHTML);
 
