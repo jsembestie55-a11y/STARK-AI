@@ -1,9 +1,3 @@
-import OpenAI from "openai";
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
-
 export default async function handler(req, res) {
 
   if (req.method !== "POST") {
@@ -16,35 +10,39 @@ export default async function handler(req, res) {
 
   if (!message) {
     return res.status(400).json({
-      error: "No message"
+      error: "Chybí zpráva"
     });
   }
 
-  try {
+  const q = message.toLowerCase();
 
-    const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "system",
-          content: "Jsi STARK AI, futuristický osobní asistent inspirovaný JARVISEM."
-        },
-        {
-          role: "user",
-          content: message
-        }
-      ]
-    });
+  let reply = "Tento příkaz se ještě učím.";
 
-    res.status(200).json({
-      reply: response.choices[0].message.content
-    });
-
-  } catch (error) {
-
-    res.status(500).json({
-      error: "AI chyba"
-    });
-
+  if (q.includes("ahoj")) {
+    reply = "Dobrý den. STARK AI je online.";
   }
+
+  else if (q.includes("kdo jsi")) {
+    reply = "Jsem STARK AI, osobní asistent vytvořený pro pomoc a informace.";
+  }
+
+  else if (q.includes("čas")) {
+    reply = "Aktuální čas zjistíte podle hodin vašeho zařízení.";
+  }
+
+  else if (q.includes("počasí")) {
+    reply = "Nemám zatím přístup k živým datům počasí, ale tuto funkci můžeme později přidat.";
+  }
+
+  else if (q.includes("projekt")) {
+    reply = "STARK AI je webový osobní asistent s futuristickým rozhraním.";
+  }
+
+  else if (q.includes("pomoc")) {
+    reply = "Mohu odpovídat na základní otázky a postupně se učit nové funkce.";
+  }
+
+  res.status(200).json({
+    reply
+  });
 }
