@@ -173,7 +173,23 @@ answer="Jsem STARK AI, osobní asistent.";
 }
 
 else if(q.includes("projekt")){
-answer="Pomohu vám vytvořit a naplánovat projekt.";
+    answer="Pomohu vám vytvořit a naplánovat projekt.";
+}
+
+else if(q.includes("jmenuji se")){
+    let name = q.replace("jmenuji se","").trim();
+    localStorage.setItem("starkName", name);
+    answer = "Zapamatoval jsem si tě. Tvoje jméno je " + name + ".";
+}
+
+else if(q.includes("jak se jmenuji") || q.includes("pamatuješ si moje jméno")){
+    let name = localStorage.getItem("starkName");
+
+    if(name){
+        answer = "Ano. Jmenuješ se " + name + ".";
+    } else {
+        answer = "Zatím neznám tvoje jméno.";
+    }
 }
 
 else {
