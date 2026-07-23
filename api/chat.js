@@ -15,6 +15,15 @@ export default async function handler(req, res) {
   }
 
   const q = message.toLowerCase();
+  
+  if(q.includes("jmenuji se")) {
+  const name = message.replace(/jmenuji se/i,"").trim();
+
+  return res.status(200).json({
+    reply:"Zapamatoval jsem si tě. Tvé jméno je " + name,
+    memory:name
+  });
+}
 
   let reply = "Tento příkaz se ještě učím.";
 
