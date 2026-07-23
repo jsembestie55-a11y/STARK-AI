@@ -42,6 +42,29 @@ else if (q.includes("čas")) {
     reply = "Mohu odpovídat na základní otázky a postupně se učit nové funkce.";
   }
 
+else if (q.includes("iron man") || q.includes("tony stark")) {
+  reply = "Tony Stark je génius, miliardář a tvůrce technologie inspirované Jarvisem. STARK AI se snaží inspirovat podobným futuristickým stylem.";
+}
+
+else if (q.includes("kdo tě vytvořil")) {
+  reply = "Byl jsem vytvořen jako osobní AI asistent STARK AI.";
+}
+
+else if (q.includes("programování") || q.includes("kód")) {
+  reply = "Pomohu s učením programování, vysvětlením kódu a tvorbou projektů.";
+}
+
+else if (q.includes("hra") || q.includes("hry")) {
+  reply = "Mohu pomoci s informacemi o hrách, nastavením a tipy.";
+}
+
+else if (q.includes("vtip")) {
+  reply = "Proč programátor chodí spát? Protože má vypnutý systém.";
+}
+
+else if (q.includes("děkuji") || q.includes("díky")) {
+  reply = "Není zač. STARK AI je vždy připraven pomoci.";
+}
   res.status(200).json({
     reply
   });
