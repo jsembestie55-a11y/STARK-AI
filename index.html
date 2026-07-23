@@ -207,8 +207,26 @@ chat.innerHTML += "<p>STARK AI: Chyba spojení.</p>";
 return;
 }
 
+let memory = localStorage.getItem("starkName") || "";
+
+// tvoje ostatní odpovědi...
+
+if(q.toLowerCase().includes("jmenuji se")){
+    let name = q.replace(/jmenuji se/i,"").trim();
+    localStorage.setItem("starkName", name);
+    answer = "Zapamatoval jsem si tě. Tvoje jméno je " + name + ".";
+}
+
+if(q.toLowerCase().includes("jak se jmenuji") || q.toLowerCase().includes("pamatuješ si moje jméno")){
+    if(memory){
+        answer = "Ano. Jmenuješ se " + memory + ".";
+    } else {
+        answer = "Zatím neznám tvoje jméno.";
+    }
+}
 
 chat.innerHTML += "<p>STARK AI: "+answer+"</p>";
+
 
 
 localStorage.setItem("starkChat",chat.innerHTML);
